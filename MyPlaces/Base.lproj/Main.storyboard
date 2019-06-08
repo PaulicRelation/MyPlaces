@@ -110,7 +110,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="mTW-Sl-Emw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="249.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="249.50000000000006"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                             </subviews>
@@ -247,7 +247,11 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="P6r-AH-EKu"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageOfPlace" destination="mTW-Sl-Emw" id="QH5-1w-q4r"/>
+                        <outlet property="placeImage" destination="mTW-Sl-Emw" id="QH5-1w-q4r"/>
+                        <outlet property="placeLocation" destination="9nW-73-cUk" id="MPq-uD-TK3"/>
+                        <outlet property="placeName" destination="t4Y-rc-e9v" id="J6y-J6-53q"/>
+                        <outlet property="placeType" destination="umW-ms-UbJ" id="WY9-Na-GLw"/>
+                        <outlet property="saveButton" destination="P6r-AH-EKu" id="67k-yy-AhU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NGx-6O-b8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
