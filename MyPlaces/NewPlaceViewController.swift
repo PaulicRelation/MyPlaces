@@ -23,18 +23,9 @@ class NewPlaceViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        DispatchQueue.main.async {
-            self.newPlace.savePlaces()
-        }
-
-
-
         tableView.tableFooterView = UIView()
         saveButton.isEnabled = false
-
         placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
-
     }
 
     // MARK: - Table view delegate
@@ -44,7 +35,6 @@ class NewPlaceViewController: UITableViewController {
             let photoIcon = #imageLiteral(resourceName: "photo")
 
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
             let camera = UIAlertAction(title: "Camera", style: .default) {_  in
                 self.chooseImagePicker(source: .camera)
             }
@@ -71,9 +61,7 @@ class NewPlaceViewController: UITableViewController {
         }
     }
     func saveNewPlace() {
-
         var image: UIImage?
-
         if imageIsChanged {image = placeImage.image} else {image = #imageLiteral(resourceName: "imagePlaceholder")}
 
 //        newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, image: image, restaurantImage: nil)
@@ -95,7 +83,6 @@ extension NewPlaceViewController: UITextFieldDelegate {
     }
 
     @objc private func textFieldChanged() {
-
         if placeName.text?.isEmpty == true {
             saveButton.isEnabled = false
         } else  {
@@ -121,15 +108,11 @@ extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationC
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         placeImage.image = info[.editedImage] as? UIImage
-
         placeImage.contentMode = .scaleToFill
         placeImage.clipsToBounds = true
-
         imageIsChanged = true
 
         dismiss(animated: true)
-
-
     }
 
 }
