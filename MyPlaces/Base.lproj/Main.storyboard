@@ -250,10 +250,26 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="252" placeholderIntrinsicHeight="44" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="68R-tB-c6X" userLabel="StarView" customClass="RatingControl" customModule="MyPlaces" customModuleProvider="target">
+                                                    <rect key="frame" x="303" y="34.5" width="96" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="G6r-x8-xjk"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="starSize">
+                                                            <size key="value" width="16" height="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starCount">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="a9e-Qo-435" secondAttribute="trailing" constant="16" id="43T-IV-KTY"/>
                                                 <constraint firstItem="a9e-Qo-435" firstAttribute="top" secondItem="cnE-dj-aqi" secondAttribute="top" constant="8" id="50G-ax-ODn"/>
+                                                <constraint firstItem="68R-tB-c6X" firstAttribute="centerY" secondItem="cnE-dj-aqi" secondAttribute="centerY" id="9rM-xl-2Cn"/>
+                                                <constraint firstAttribute="trailing" secondItem="68R-tB-c6X" secondAttribute="trailing" constant="15" id="Bd9-pL-53G"/>
                                                 <constraint firstAttribute="bottom" secondItem="a9e-Qo-435" secondAttribute="bottom" constant="8" id="FB3-7E-Aji"/>
                                                 <constraint firstItem="a9e-Qo-435" firstAttribute="leading" secondItem="XcG-8r-0pS" secondAttribute="trailing" constant="16" id="MWY-Ub-ACl"/>
                                                 <constraint firstItem="XcG-8r-0pS" firstAttribute="leading" secondItem="cnE-dj-aqi" secondAttribute="leading" constant="15" id="dx1-3J-mn4"/>
@@ -264,6 +280,7 @@
                                             <outlet property="imageOfPlace" destination="XcG-8r-0pS" id="62e-p3-nnb"/>
                                             <outlet property="locationLabel" destination="qpj-x4-gY8" id="bzE-df-2fW"/>
                                             <outlet property="nameLabel" destination="3ZG-ei-Wuv" id="JP1-oi-hlM"/>
+                                            <outlet property="ratingStarView" destination="68R-tB-c6X" id="lvz-aQ-Gly"/>
                                             <outlet property="typeLabel" destination="7Ex-6C-r8P" id="0TT-cG-5zQ"/>
                                             <segue destination="QML-T8-bvT" kind="show" identifier="showDetail" id="M4a-ER-aOP"/>
                                         </connections>

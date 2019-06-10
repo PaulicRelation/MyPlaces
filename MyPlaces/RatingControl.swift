@@ -15,6 +15,7 @@ import UIKit
     var rating = 0 {
         didSet { updateButtonSelectionState() }
     }
+    var updateOnTouch = true
     private var ratingButtons = [UIButton]()
 
     @IBInspectable var starSize: CGSize = CGSize(width: 44.0, height: 44.0) {
@@ -36,7 +37,7 @@ import UIKit
     // MARK: Button Action
 
     @objc func ratingButtonTapped(button: UIButton) {
-        guard let index = ratingButtons.firstIndex(of: button) else { return }
+        guard let index = ratingButtons.firstIndex(of: button), updateOnTouch else { return }
 
         // Calculate rating of the selected button
         let selectedRating =  index + 1
@@ -88,7 +89,7 @@ import UIKit
             ratingButtons.append(button)
 
         }
-        updateButtonSelectionState() 
+        updateButtonSelectionState()
 
     }
 

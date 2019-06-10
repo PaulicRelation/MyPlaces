@@ -62,6 +62,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.imageOfPlace.image = UIImage(data: place.imageData!)
         cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height/2
         cell.imageOfPlace.clipsToBounds = true
+        cell.ratingStarView.rating = Int(place.rating)
         return cell
      }
 
@@ -69,7 +70,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
