@@ -42,26 +42,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Table view data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering {
-            return filteredPlaces.count
-        }
-        return places.isEmpty ? 0 : places.count
+            return isFiltering ? filteredPlaces.count : places.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
 
-        var place = Place()
-        if isFiltering {
-            place = filteredPlaces[indexPath.row]
-        } else { place = places[indexPath.row] }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
+        let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
 
         cell.nameLabel.text = place.name
-        cell.locationLabel.text =  place.location
+        cell.locationLabel.text = place.location
         cell.typeLabel.text = place.type
         cell.imageOfPlace.image = UIImage(data: place.imageData!)
-        cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height/2
-        cell.imageOfPlace.clipsToBounds = true
         cell.ratingStarView.rating = Int(place.rating)
         return cell
      }
@@ -70,13 +62,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let place  = places[indexPath.row]
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") {(_, _) in
-            StorageManager.deleteObject(place)
+            StorageManager.deleteObject(self.places[indexPath.row])
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         return [deleteAction]
@@ -88,18 +78,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if segue.identifier == "showDetail" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
 
-            let place: Place
-            if isFiltering {
-                place = filteredPlaces[indexPath.row]
-            } else { place = places[indexPath.row] }
-
-            let newPlaceVC = segue.destination  as! NewPlaceViewController
+            let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
+            let newPlaceVC = segue.destination as! NewPlaceViewController
             newPlaceVC.currentPlace = place
         }
     }
 
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
-        guard let newPlaceVC = segue.source   as? NewPlaceViewController else { return }
+        guard let newPlaceVC = segue.source as? NewPlaceViewController else { return }
         newPlaceVC.savePlace()
         tableView.reloadData()
     }
@@ -110,10 +96,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBAction func reverceSorting(_ sender: UIBarButtonItem) {
         ascendingSorting.toggle()
-        if ascendingSorting {
-            reverseSortingButton.image = #imageLiteral(resourceName: "AZ")
-        } else { reverseSortingButton.image = #imageLiteral(resourceName: "ZA") }
-          sorting()
+        reverseSortingButton.image = ascendingSorting ? #imageLiteral(resourceName: "AZ") : #imageLiteral(resourceName: "ZA")
+        sorting()
     }
 
     private func sorting() {
@@ -127,6 +111,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 }
 
 extension MainViewController: UISearchResultsUpdating {
+
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
@@ -135,5 +120,4 @@ extension MainViewController: UISearchResultsUpdating {
         tableView.reloadData()
     }
 }
-
 
