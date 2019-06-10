@@ -16,6 +16,7 @@
 		E91F477F22ABDD4500321A7A /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91F477E22ABDD4500321A7A /* PlaceModel.swift */; };
 		E91F478122ABF66100321A7A /* NewPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91F478022ABF66100321A7A /* NewPlaceViewController.swift */; };
 		E9DA4BDB22AD0BE400BA9CC5 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DA4BDA22AD0BE400BA9CC5 /* StorageManager.swift */; };
+		E9DED46722AED27000404E8F /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DED46622AED27000404E8F /* RatingControl.swift */; };
 		E9F5BBCC22ACF77900213E24 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F5BBCB22ACF77900213E24 /* Realm.framework */; };
 		E9F5BBCE22ACF82F00213E24 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F5BBCD22ACF82F00213E24 /* RealmSwift.framework */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		E91F477E22ABDD4500321A7A /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		E91F478022ABF66100321A7A /* NewPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceViewController.swift; sourceTree = "<group>"; };
 		E9DA4BDA22AD0BE400BA9CC5 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		E9DED46622AED27000404E8F /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		E9F5BBCB22ACF77900213E24 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		E9F5BBCD22ACF82F00213E24 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +76,7 @@
 				E9DA4BDA22AD0BE400BA9CC5 /* StorageManager.swift */,
 				E91F477A22AB9F6800321A7A /* MainViewController.swift */,
 				E91F477C22ABD4DD00321A7A /* CustomTableViewCell.swift */,
+				E9DED46622AED27000404E8F /* RatingControl.swift */,
 				E91F478022ABF66100321A7A /* NewPlaceViewController.swift */,
 				E91F476C22AB9D2F00321A7A /* Main.storyboard */,
 				E91F477122AB9D3000321A7A /* LaunchScreen.storyboard */,
@@ -186,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9DED46722AED27000404E8F /* RatingControl.swift in Sources */,
 				E91F477D22ABD4DD00321A7A /* CustomTableViewCell.swift in Sources */,
 				E91F477F22ABDD4500321A7A /* PlaceModel.swift in Sources */,
 				E91F478122ABF66100321A7A /* NewPlaceViewController.swift in Sources */,
