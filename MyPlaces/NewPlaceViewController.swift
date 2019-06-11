@@ -30,6 +30,7 @@ class NewPlaceViewController: UITableViewController {
     }
 
     // MARK: - Table view delegate
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             let cameraIcon = #imageLiteral(resourceName: "camera")
@@ -61,14 +62,21 @@ class NewPlaceViewController: UITableViewController {
             view.endEditing(true)
         }
     }
+
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier != "showMap" { return }
+        let mapVC = segue.destination as! MapViewController
+        mapVC.place.name = placeName.text!
+        mapVC.place.location = placeLocation.text
+        mapVC.place.type = placeType.text
+        mapVC.place.imageData = placeImage.image?.pngData()
+    }
+
     func savePlace() {
 
-        var image: UIImage?
-        if imageIsChanged {
-            image = placeImage.image
-        } else {
-            image = #imageLiteral(resourceName: "imagePlaceholder")
-        }
+        let image = imageIsChanged ? placeImage.image : #imageLiteral(resourceName: "imagePlaceholder")
         let newPlace = Place(name: placeName.text!,
                              location: placeLocation.text,
                              type: placeType.text,
