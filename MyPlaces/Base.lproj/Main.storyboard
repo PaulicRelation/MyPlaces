@@ -238,11 +238,24 @@
                                     <action selector="closeVC:" destination="9dF-92-gJa" eventType="touchUpInside" id="rqn-7b-B91"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKw-Mi-ShT">
+                                <rect key="frame" x="324" y="806" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="JbZ-Yz-XX6"/>
+                                    <constraint firstAttribute="height" constant="50" id="vhf-MF-gby"/>
+                                </constraints>
+                                <state key="normal" image="Location"/>
+                                <connections>
+                                    <action selector="shiftToUserLocation:" destination="9dF-92-gJa" eventType="touchUpInside" id="u6v-H0-YgH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Nx1-68-5KA" firstAttribute="trailing" secondItem="5GK-jc-5dP" secondAttribute="trailing" constant="40" id="SQv-aQ-HFd"/>
                             <constraint firstItem="5GK-jc-5dP" firstAttribute="top" secondItem="ZEu-z8-aYb" secondAttribute="top" constant="70" id="oLt-wI-qi9"/>
+                            <constraint firstAttribute="bottom" secondItem="YKw-Mi-ShT" secondAttribute="bottom" constant="40" id="yEq-qL-ZZH"/>
+                            <constraint firstItem="Nx1-68-5KA" firstAttribute="trailing" secondItem="YKw-Mi-ShT" secondAttribute="trailing" constant="40" id="yPR-Hj-bue"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nx1-68-5KA"/>
                     </view>
@@ -432,6 +445,7 @@
     </scenes>
     <resources>
         <image name="AZ" width="25" height="24"/>
+        <image name="Location" width="128" height="128"/>
         <image name="Photo" width="195" height="196"/>
         <image name="cancel" width="128" height="128"/>
         <image name="map" width="50" height="50"/>

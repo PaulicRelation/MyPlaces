@@ -80,11 +80,11 @@
 				E91F477C22ABD4DD00321A7A /* CustomTableViewCell.swift */,
 				E9DED46622AED27000404E8F /* RatingControl.swift */,
 				E91F478022ABF66100321A7A /* NewPlaceViewController.swift */,
+				E9DED46822AFAECF00404E8F /* MapViewController.swift */,
 				E91F476C22AB9D2F00321A7A /* Main.storyboard */,
 				E91F477122AB9D3000321A7A /* LaunchScreen.storyboard */,
 				E91F476F22AB9D3000321A7A /* Assets.xcassets */,
 				E91F477422AB9D3000321A7A /* Info.plist */,
-				E9DED46822AFAECF00404E8F /* MapViewController.swift */,
 			);
 			path = MyPlaces;
 			sourceTree = "<group>";

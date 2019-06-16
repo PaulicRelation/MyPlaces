@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class MapViewController: UIViewController {
 
@@ -15,11 +16,15 @@ class MapViewController: UIViewController {
 
     var place = Place()
     let annotationIdentifier  = "annotationIdentifier"
+    let locationManager = CLLocationManager()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         setupPlacemark()
+        checkLocationServices()
+
     }
 
     private func setupPlacemark() {
@@ -47,6 +52,36 @@ class MapViewController: UIViewController {
         }
     }
 
+    private func checkLocationServices() {
+        if CLLocationManager.locationServicesEnabled() {
+            setupLocationManager()
+            checkLocationAuthorisation()
+        } else {
+            // TODO: - show alert controller
+        }
+    }
+
+    private func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+
+    private func checkLocationAuthorisation() {
+        switch CLLocationManager.authorizationStatus() {
+        case .denied,.restricted, .authorizedAlways:
+            // TODO: - show alert controller
+            break
+        case .authorizedWhenInUse:
+            mapView.showsUserLocation = true
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        @unknown default:
+            print("new case in location manager authorisation status avialable")
+        }
+    }
+
+    @IBAction func shiftToUserLocation(_ sender: Any) {
+    }
     @IBAction func closeVC(_ sender: Any) {
         dismiss(animated: true)
     }
@@ -55,7 +90,6 @@ class MapViewController: UIViewController {
 extension MapViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-
         guard !(annotation is MKUserLocation) else { return nil }
 
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) as? MKPinAnnotationView
@@ -71,12 +105,14 @@ extension MapViewController: MKMapViewDelegate {
             imageView.clipsToBounds = true
             imageView.image = UIImage(data: imageData)
             annotationView?.rightCalloutAccessoryView = imageView
-
         }
-
-
-
         return  annotationView
     }
 }
 
+extension MapViewController: CLLocationManagerDelegate {
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAuthorisation()
+    }
+}
