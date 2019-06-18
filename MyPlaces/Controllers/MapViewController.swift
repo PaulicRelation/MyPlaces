@@ -18,13 +18,11 @@ class MapViewController: UIViewController {
     let annotationIdentifier  = "annotationIdentifier"
     let locationManager = CLLocationManager()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         setupPlacemark()
         checkLocationServices()
-
     }
 
     private func setupPlacemark() {
@@ -57,7 +55,9 @@ class MapViewController: UIViewController {
             setupLocationManager()
             checkLocationAuthorisation()
         } else {
-            // TODO: - show alert controller
+            showAlert(title: "Location services are disabled",
+                      message: "To enable it go: Settings -> Privacy -> Location -> Location Services. And turn On"
+            )
         }
     }
 
@@ -77,6 +77,15 @@ class MapViewController: UIViewController {
             locationManager.requestWhenInUseAuthorization()
         @unknown default:
             print("new case in location manager authorisation status avialable")
+        }
+    }
+
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) // TODO:  add seague to system preference
+        alert.addAction(okAction)
+        DispatchQueue.main.asyncAfter(deadline: .now()  + 1)  {
+            self.present(alert, animated: true)
         }
     }
 

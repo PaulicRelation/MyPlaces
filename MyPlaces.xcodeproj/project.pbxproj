@@ -74,19 +74,51 @@
 			isa = PBXGroup;
 			children = (
 				E91F476822AB9D2F00321A7A /* AppDelegate.swift */,
-				E91F477E22ABDD4500321A7A /* PlaceModel.swift */,
-				E9DA4BDA22AD0BE400BA9CC5 /* StorageManager.swift */,
-				E91F477A22AB9F6800321A7A /* MainViewController.swift */,
-				E91F477C22ABD4DD00321A7A /* CustomTableViewCell.swift */,
-				E9DED46622AED27000404E8F /* RatingControl.swift */,
-				E91F478022ABF66100321A7A /* NewPlaceViewController.swift */,
-				E9DED46822AFAECF00404E8F /* MapViewController.swift */,
+				E9A4B39122B8E2BE00124D3A /* Models */,
+				E9A4B39422B8E33500124D3A /* Views */,
+				E9A4B39322B8E30200124D3A /* Controllers */,
+				E9A4B39222B8E2D700124D3A /* Managers */,
 				E91F476C22AB9D2F00321A7A /* Main.storyboard */,
 				E91F477122AB9D3000321A7A /* LaunchScreen.storyboard */,
 				E91F476F22AB9D3000321A7A /* Assets.xcassets */,
 				E91F477422AB9D3000321A7A /* Info.plist */,
 			);
 			path = MyPlaces;
+			sourceTree = "<group>";
+		};
+		E9A4B39122B8E2BE00124D3A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E91F477E22ABDD4500321A7A /* PlaceModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E9A4B39222B8E2D700124D3A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E9DA4BDA22AD0BE400BA9CC5 /* StorageManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		E9A4B39322B8E30200124D3A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E91F477A22AB9F6800321A7A /* MainViewController.swift */,
+				E91F478022ABF66100321A7A /* NewPlaceViewController.swift */,
+				E9DED46822AFAECF00404E8F /* MapViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E9A4B39422B8E33500124D3A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E91F477C22ABD4DD00321A7A /* CustomTableViewCell.swift */,
+				E9DED46622AED27000404E8F /* RatingControl.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E9F5BBCA22ACF77900213E24 /* Frameworks */ = {
