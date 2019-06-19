@@ -68,9 +68,18 @@ class MapViewController: UIViewController {
 
     private func checkLocationAuthorisation() {
         switch CLLocationManager.authorizationStatus() {
-        case .denied,.restricted, .authorizedAlways:
-            // TODO: - show alert controller
-            break
+        case .denied:
+            // TODO: - add seague to settings
+            showAlert(title: "Access to your location is denied",
+                      message: "To give permission go: Settings -> MyPlaces -> Location"
+            )
+        case .restricted:
+            // TODO: - add seague to settings
+            showAlert(title: "Access to your location is restricted",
+                      message: "To give permission go: Settings -> MyPlaces -> Location"
+            )
+        case .authorizedAlways:
+            break 
         case .authorizedWhenInUse:
             mapView.showsUserLocation = true
         case .notDetermined:
@@ -90,6 +99,11 @@ class MapViewController: UIViewController {
     }
 
     @IBAction func shiftToUserLocation(_ sender: Any) {
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            mapView.setRegion(region, animated: true)
+
+        }
     }
     @IBAction func closeVC(_ sender: Any) {
         dismiss(animated: true)
